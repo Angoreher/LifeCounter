@@ -1,6 +1,5 @@
-package cl.xcero.xcerolifecounter;
+package cl.xcero.lifecounternew;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.PixelFormat;
@@ -13,6 +12,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
@@ -28,6 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private TextView opPlusOne;
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             float y = se.values[1];
             float z = se.values[2];
             mAccelLast = mAccelCurrent;
-            mAccelCurrent = (float) Math.sqrt((double) (x*x + y*y + z*z));
+            mAccelCurrent = (float) Math.sqrt((double) (x * x + y * y + z * z));
             float delta = mAccelCurrent - mAccelLast;
             mAccel = mAccel * 0.9f + delta; // perform low-cut filter
 
@@ -142,12 +143,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mAccelLast = SensorManager.GRAVITY_EARTH;
 
         // make surface transparent
-        SurfaceView opSurfaceTrack = (SurfaceView)findViewById(R.id.opBack);
+        SurfaceView opSurfaceTrack = (SurfaceView) findViewById(R.id.opBack);
         opSurfaceTrack.setZOrderOnTop(true);    // necessary
         SurfaceHolder opSfhTrackHolder = opSurfaceTrack.getHolder();
         opSfhTrackHolder.setFormat(PixelFormat.TRANSPARENT);
 
-        SurfaceView plSurfaceTrack = (SurfaceView)findViewById(R.id.plBack);
+        SurfaceView plSurfaceTrack = (SurfaceView) findViewById(R.id.plBack);
         plSurfaceTrack.setZOrderOnTop(true);    // necessary
         SurfaceHolder plSfhTrackHolder = plSurfaceTrack.getHolder();
         plSfhTrackHolder.setFormat(PixelFormat.TRANSPARENT);
@@ -193,9 +194,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(View v) {
                 opLifeCount = opLifeCount + 1;
 
-                    String opLifeString = Integer.toString(opLifeCount);
-                    opLife.setText(opLifeString);
-                }
+                String opLifeString = Integer.toString(opLifeCount);
+                opLife.setText(opLifeString);
+            }
         };
         View.OnClickListener opPlusFiveListener = new View.OnClickListener() {
             @Override
@@ -329,7 +330,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         float abs = lastX - event.getX();
                         /*float bbs = Math.bbs(abs - event.getX());*/
 
-                        if (abs > dragSensibility){
+                        if (abs > dragSensibility) {
                             opLifeCount = opLifeCount - 1;
                             String opLifeDragChangeMinus = Integer.toString(opLifeCount);
                             opLife.setText(opLifeDragChangeMinus);
@@ -337,7 +338,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             break;
                         }
 
-                        if (abs < -dragSensibility){
+                        if (abs < -dragSensibility) {
                             opLifeCount = opLifeCount + 1;
                             String opLifeDragChangePlus = Integer.toString(opLifeCount);
                             opLife.setText(opLifeDragChangePlus);
@@ -481,7 +482,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -547,5 +547,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         client.disconnect();*/
     }
 
-
 }
+
